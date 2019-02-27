@@ -57,7 +57,8 @@ module Fog
           signature = sign(@aliyun_accesskey_secret, parameters)
           pathUrl += '&Signature='
           pathUrl += signature
-
+          puts "++++++++++++list images++++++++++++"
+          puts pathUrl.inspect
           request(
             expects: [200, 203],
             method: 'GET',
