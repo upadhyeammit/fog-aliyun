@@ -7,7 +7,6 @@ module Fog
         def all
           data = service.list_server_types.body
           datanew = Fog::JSON.decode(data)['InstanceTypes']['InstanceType']
-          #datanew = JSON.decode(data)
           load(datanew)
         end
       end
