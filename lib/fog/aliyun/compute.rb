@@ -348,7 +348,7 @@ module Fog
         def defaultAliyunUri(action, sigNonce, time)
           parTimeFormat = time.strftime('%Y-%m-%dT%H:%M:%SZ')
           urlTimeFormat = URI.encode(parTimeFormat, ':')
-          '?Format=JSON&AccessKeyId=' + @aliyun_accesskey_id + '&Action=' + action + '&SignatureMethod=HMAC-SHA1&RegionId=' + @aliyun_region_id + '&SignatureNonce=' + sigNonce + '&SignatureVersion=1.0&Version=2014-05-26&Timestamp=' + urlTimeFormat
+          '?Format=JSON&AccessKeyId=' + @aliyun_accesskey_id + '&Action=' + action + '&SignatureMethod=HMAC-SHA1&RegionId=' + 'ap-south-1' + '&SignatureNonce=' + sigNonce + '&SignatureVersion=1.0&Version=2014-05-26&Timestamp=' + urlTimeFormat
         end
 
         def defaultAliyunQueryParameters(action, sigNonce, time)
@@ -368,7 +368,7 @@ module Fog
         def defaultAliyunVPCUri(action, sigNonce, time)
           parTimeFormat = time.strftime('%Y-%m-%dT%H:%M:%SZ')
           urlTimeFormat = URI.encode(parTimeFormat, ':')
-          '?Format=JSON&AccessKeyId=' + @aliyun_accesskey_id + '&Action=' + action + '&SignatureMethod=HMAC-SHA1&RegionId=' + @aliyun_region_id + '&SignatureNonce=' + sigNonce + '&SignatureVersion=1.0&Version=2016-04-28&Timestamp=' + urlTimeFormat
+          '?Format=JSON&AccessKeyId=' + @aliyun_accesskey_id + '&Action=' + action + '&SignatureMethod=HMAC-SHA1&RegionId=' + 'ap-south-1' + '&SignatureNonce=' + sigNonce + '&SignatureVersion=1.0&Version=2016-04-28&Timestamp=' + urlTimeFormat
         end
 
         # generate random num
@@ -427,10 +427,11 @@ module Fog
             canonicalizedQueryString += '&' + URI.encode(k, '/[^!*\'()\;?:@#&%=+$,{}[]<>`" ') + '=' + URI.encode(v, '/[^!*\'()\;?:@#&%=+$,{}[]<>`" ')
           end
 
+
           canonicalizedQueryString[0] = ''
           stringToSign = 'GET&%2F&' + URI.encode(canonicalizedQueryString, '/[^!*\'()\;?:@#&%=+$,{}[]<>`" ')
           key = accessKeySecret + '&'
-
+          puts "stringtosign ---- #{stringToSign}"
           digVer = OpenSSL::Digest.new('sha1')
           digest = OpenSSL::HMAC.digest(digVer, key, stringToSign)
           signature = Base64.encode64(digest)
