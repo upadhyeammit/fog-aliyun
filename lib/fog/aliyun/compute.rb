@@ -36,6 +36,8 @@ module Fog
       collection :route_tables
       model :route_entry
       collection :route_entrys
+      model :flavor
+      collection :flavors
 
       ## REQUESTS
       #
@@ -348,7 +350,7 @@ module Fog
         def defaultAliyunUri(action, sigNonce, time)
           parTimeFormat = time.strftime('%Y-%m-%dT%H:%M:%SZ')
           urlTimeFormat = URI.encode(parTimeFormat, ':')
-          '?Format=JSON&AccessKeyId=' + @aliyun_accesskey_id + '&Action=' + action + '&SignatureMethod=HMAC-SHA1&RegionId=' + 'ap-south-1' + '&SignatureNonce=' + sigNonce + '&SignatureVersion=1.0&Version=2014-05-26&Timestamp=' + urlTimeFormat
+          '?Format=JSON&AccessKeyId=' + @aliyun_accesskey_id + '&Action=' + action + '&SignatureMethod=HMAC-SHA1&RegionId=' + @aliyun_region_id + '&SignatureNonce=' + sigNonce + '&SignatureVersion=1.0&Version=2014-05-26&Timestamp=' + urlTimeFormat
         end
 
         def defaultAliyunQueryParameters(action, sigNonce, time)
@@ -368,7 +370,7 @@ module Fog
         def defaultAliyunVPCUri(action, sigNonce, time)
           parTimeFormat = time.strftime('%Y-%m-%dT%H:%M:%SZ')
           urlTimeFormat = URI.encode(parTimeFormat, ':')
-          '?Format=JSON&AccessKeyId=' + @aliyun_accesskey_id + '&Action=' + action + '&SignatureMethod=HMAC-SHA1&RegionId=' + 'ap-south-1' + '&SignatureNonce=' + sigNonce + '&SignatureVersion=1.0&Version=2016-04-28&Timestamp=' + urlTimeFormat
+          '?Format=JSON&AccessKeyId=' + @aliyun_accesskey_id + '&Action=' + action + '&SignatureMethod=HMAC-SHA1&RegionId=' + @aliyun_region_id + '&SignatureNonce=' + sigNonce + '&SignatureVersion=1.0&Version=2016-04-28&Timestamp=' + urlTimeFormat
         end
 
         # generate random num

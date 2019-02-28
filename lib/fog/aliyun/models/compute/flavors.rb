@@ -1,4 +1,5 @@
 require 'fog/core/collection'
+require 'fog/aliyun/models/compute/flavor'
 module Fog
   module Compute
     class Aliyun
