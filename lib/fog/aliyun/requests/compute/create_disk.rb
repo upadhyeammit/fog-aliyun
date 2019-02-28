@@ -54,7 +54,7 @@ module Fog
 
           if category
             parameters['DiskCategory'] = category
-            pathUrl += 'DiskCategory'
+            pathUrl += '&DiskCategory='
             pathUrl += category
           end
 

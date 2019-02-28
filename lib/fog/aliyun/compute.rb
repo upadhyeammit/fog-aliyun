@@ -431,7 +431,6 @@ module Fog
           canonicalizedQueryString[0] = ''
           stringToSign = 'GET&%2F&' + URI.encode(canonicalizedQueryString, '/[^!*\'()\;?:@#&%=+$,{}[]<>`" ')
           key = accessKeySecret + '&'
-          puts "stringtosign ---- #{stringToSign}"
           digVer = OpenSSL::Digest.new('sha1')
           digest = OpenSSL::HMAC.digest(digVer, key, stringToSign)
           signature = Base64.encode64(digest)
