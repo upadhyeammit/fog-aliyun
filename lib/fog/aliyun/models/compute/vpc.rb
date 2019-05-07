@@ -5,8 +5,13 @@ module Fog
   module Compute
     class Aliyun
       class VPC < Fog::Model
+        #identity :id, aliases: 'VpcId' :subnet_id need to fix this one
+        #identity :subnet_id, aliases: 'VpcId'
+        #alias :vpc_id  :subnet_id
+        #attribute :subnet_id, aliases: 'VpcId'
         identity :id, aliases: 'VpcId'
-        attribute :name, aliases: 'VpcName'
+        alias :subnet_id :id
+        attribute :Name, aliases: 'VpcName'
         attribute :state, aliases: 'Status'
         attribute :cidr_block, aliases: 'CidrBlock'
         attribute :v_switch_ids, aliases: 'VSwitchIds'
