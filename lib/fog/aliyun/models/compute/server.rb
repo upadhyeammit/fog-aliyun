@@ -34,6 +34,7 @@ module Fog
         attribute :charge_type, aliases: 'InstanceChargeType'
         attribute :operation_locks, aliases: 'OperationLocks'
         attribute :expired_at, aliases: 'ExpiredTime'
+        attribute :vswitch_id, aliases: 'VSwitchId'
 
         def image
           requires :image_id
@@ -44,6 +45,16 @@ module Fog
           requires :vpc_id
           $vpc = Fog::Compute::Aliyun::Vpcs.new(service: service).all('vpcId' => vpc_id)[0]
         end
+
+        def save()
+          options = {}
+          options[:VSwitchId] = vswitch_id
+          puts "\n\n\n\n*****************************amit debug options #{options}"
+          data = Fog::JSON.decode(service.create_server(image_id, security_group_ids, type, options).body)
+          merge_attributes(data)
+          true
+        end
+
 
         # {"ImageId"=>"ubuntu1404_32_20G_aliaegis_20150325.vhd", "InnerIpAddress"=>{"IpAddress"=>["10.171.90.171"]},
         #  "VlanId"=>"", "InstanceId"=>"i-25d1ry3jz",
