@@ -5,13 +5,18 @@ module Fog
     class Aliyun
       class Real
         # {Aliyun API Reference}[https://docs.aliyun.com/?spm=5176.100054.3.1.DGkmH7#/pub/ecs/open-api/other&describeinstancetypes]
-        def list_server_types
+        def list_server_types(family = nil)
           _action = 'DescribeInstanceTypes'
           _sigNonce = randonStr
           _time = Time.new.utc
 
           _parameters = defalutParameters(_action, _sigNonce, _time)
           _pathURL = defaultAliyunUri(_action, _sigNonce, _time)
+
+          if family.present?
+            _parameters['InstanceTypeFamily'] = family
+            _pathURL += '&InstanceTypeFamily=' + family
+          end
 
           _signature = sign(@aliyun_accesskey_secret, _parameters)
           _pathURL += '&Signature=' + _signature
