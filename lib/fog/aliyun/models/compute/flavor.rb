@@ -6,8 +6,7 @@ module Fog
         attribute :CpuCoreCount
         attribute :InstanceTypeFamily
         attribute :EniQuantity
-        attribute :InstanceTypeId
-        alias :name :InstanceTypeId
+        attribute :instance_type_id, aliases: 'InstanceTypeId'
         attribute :InstanceFamilyLevel
         attribute :GPUSpec
         attribute :MemorySize

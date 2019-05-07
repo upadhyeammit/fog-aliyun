@@ -53,6 +53,7 @@ module Fog
             filters_arg = { 'vpcId' => [*filters_arg] }
           end
           data = Fog::JSON.decode(service.list_vpcs(filters_arg).body)['Vpcs']['Vpc']
+          puts "printing data #{data}"
           load(data)
         end
 

@@ -3,16 +3,16 @@ module Fog
   module Compute
     class Aliyun
       class Zone < Fog::Model
-        attribute :CpuCoreCount
-        attribute :InstanceTypeFamily
-        attribute :EniQuantity
-        attribute :InstanceTypeId
-        alias :name :InstanceTypeId
-        attribute :InstanceFamilyLevel
-        attribute :GPUSpec
-        attribute :MemorySize
-        attribute :LocalStorageCategory
-        attribute :EniPrivateIpAddressQuantity
+        attribute :AvailableDiskCategories
+        attribute :AvailableDedicatedHostTypes
+        attribute :AvailableResources
+        attribute :AvailableResourceCreation
+        attribute :AvailableInstanceTypes
+        attribute :AvailableVolumeCategories
+        attribute :DedicatedHostGenerations
+        attribute :LocalName
+        attribute :ZoneId
+        alias :zone_id :ZoneId
       end
     end
   end

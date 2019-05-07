@@ -3,11 +3,11 @@ require 'fog/aliyun/models/compute/flavor'
 module Fog
   module Compute
     class Aliyun
-      class Flavors < Fog::Collection
-        model Fog::Compute::Aliyun::Flavor
+      class Zones < Fog::Collection
+        model Fog::Compute::Aliyun::Zone
         def all
           data = service.list_zones.body
-          #datanew = Fog::JSON.decode(data)['InstanceTypes']['InstanceType']
+          datanew = Fog::JSON.decode(data)['Zones']['Zone']
           load(datanew)
         end
       end
