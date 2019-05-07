@@ -121,6 +121,9 @@ module Fog
       request :attach_disk
       request :detach_disk
 
+      # Keypair
+      request :import_key_pair
+
       class Mock
         attr_reader :auth_token
         attr_reader :auth_token_expiration
