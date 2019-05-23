@@ -36,16 +36,11 @@ module Fog
       collection :route_tables
       model :route_entry
       collection :route_entrys
-<<<<<<< HEAD
       model :flavor
       collection :flavors
       model :zone
       collection :zones
 
-=======
-      model :key_pair
-      collection :key_pairs
->>>>>>> f0d7a47... add keypair model and collection
       ## REQUESTS
       #
       request_path 'fog/aliyun/requests/compute'
