@@ -40,6 +40,8 @@ module Fog
       collection :key_pairs
       model :zone
       collection :zones
+      model :flavor
+      collection :flavors
       ## REQUESTS
       #
       request_path 'fog/aliyun/requests/compute'
