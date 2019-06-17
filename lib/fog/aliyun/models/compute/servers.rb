@@ -38,7 +38,11 @@ module Fog
           server = create(args)
           server.wait_for { stopped? }
           server.start
+<<<<<<< HEAD
           if args[:max_bandwidth_out].empty? && args[:assign_public_ip]
+=======
+          if !args[:max_bandwidth_out].empty? && args[:assign_public_ip]
+>>>>>>> 397c878... Handle public ipaddr assignment
             server.wait_for { running? }
             service.allocate_public_ip_address(server.id)
           end
