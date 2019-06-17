@@ -54,6 +54,7 @@ module Fog
           options[:KeyPairName] = key_pair_name if key_pair_name
           options[:UserData] = user_data if user_data
           options[:InstanceName] = name if name
+          options[:InternetMaxBandwidthOut] = max_bandwidth_out if max_bandwidth_out
           data = Fog::JSON.decode(service.create_server(image_id, security_group_ids, type, options).body)
           merge_attributes(data)
         end
