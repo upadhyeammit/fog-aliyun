@@ -128,6 +128,9 @@ module Fog
       request :create_key_pair
       request :delete_key_pairs
 
+      # PublicIpAddress
+      request :allocate_public_ip_address
+
       class Mock
         attr_reader :auth_token
         attr_reader :auth_token_expiration
